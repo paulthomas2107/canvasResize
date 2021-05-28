@@ -52,18 +52,20 @@ var dy = (Math.random() - 0.5) * 8;
 var radius = 30;
 */
 
-function Circle(x, y, dx, dy, radius) {
+function Circle(x, y, dx, dy, radius, color) {
   this.x = x;
   this.y = y;
   this.dx = dx;
   this.dy = dy;
   this.radius = radius;
+  this.color = color;
 
   this.draw = function () {
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.strokeStyle = "green";
     c.stroke();
+    c.fillStyle = this.color;
+    c.fill();
   };
 
   this.update = function () {
@@ -90,8 +92,16 @@ for (var i = 0; i < 50; i++) {
   var y = Math.random() * (innerHeight - radius * 2) + radius;
   var dx = (Math.random() - 0.5) * 8;
   var dy = (Math.random() - 0.5) * 8;
+  var cr =
+    "rgb(" +
+    Math.floor(Math.random() * 256) +
+    "," +
+    Math.floor(Math.random() * 256) +
+    "," +
+    Math.floor(Math.random() * 256) +
+    ")";
 
-  circleArray.push(new Circle(x, y, dx, dy, radius));
+  circleArray.push(new Circle(x, y, dx, dy, radius, cr));
 }
 
 function animate() {
