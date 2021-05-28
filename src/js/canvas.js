@@ -5,14 +5,11 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext("2d");
 
-c.drawImagefillStyle = "black";
-c.fillRect(0, 0, canvas.width, canvas.height);
-
 var mouse = {
   x: undefined,
   y: undefined,
 };
-
+    
 var maxRadius = 50;
 
 var colorArray = ["#4F7302", "#F2E205", "#F2B705", "#F29F05", "#A63F03"];
@@ -37,13 +34,13 @@ function Circle(x, y, dx, dy, radius, color) {
   this.radius = radius;
   this.color = color;
 
-    this.draw = function () {
-        c.beginPath();
-        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        c.stroke();
-        c.fillStyle = this.color;
-        c.fill();
-    }
+  this.draw = function () {
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.stroke();
+    c.fillStyle = this.color;
+    c.fill();
+  };
 
   this.update = function () {
     if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
